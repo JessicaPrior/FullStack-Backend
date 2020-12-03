@@ -4,7 +4,7 @@ import { Image } from '../model/Image';
 export class ImageDatabase extends BaseDataBase {
     private static TABLE_NAME = "Image_Table";
 
-    private static Table_Hashtag = "Hashtag_Table;"
+    private static Hashtag_Table = "Hashtag_Table"
 
     public async createImage(
         id: string,
@@ -14,18 +14,10 @@ export class ImageDatabase extends BaseDataBase {
         file: string,
         tags: string[],
         collection: string
-    ): Promise<void> {
+    ): Promise<any> {
         try {
-            const result = await BaseDataBase.connection(ImageDatabase.Table_Hashtag)
-                .select("hashtag")
-                .where(tags)
 
-            if (!result[0][0]) {
-                await BaseDataBase.connection(ImageDatabase.Table_Hashtag)
-                    .insert(id, tags)
-            }
-
-            await BaseDataBase.connection
+            await BaseDataBase.connection(ImageDatabase.TABLE_NAME)
                 .insert({
                     id,
                     subtitle,
@@ -35,8 +27,18 @@ export class ImageDatabase extends BaseDataBase {
                     tags,
                     collection
                 })
-                .into(ImageDatabase.TABLE_NAME);
+                
+            const result = await BaseDataBase.connection(ImageDatabase.Hashtag_Table)
+                .select("tags")
+                .where({tags})
+
+            if (result.length <= 0) {
+                await BaseDataBase.connection(ImageDatabase.Hashtag_Table)
+                    .insert({ id, tags })
+            }
+            return 
         } catch (error) {
+            
             throw new Error(error.sqlMessage || error.message);
         }
     }
@@ -46,7 +48,7 @@ export class ImageDatabase extends BaseDataBase {
             const result = await BaseDataBase.connection.raw(`
           SELECT * from ${ImageDatabase.TABLE_NAME} 
        `);
-            return (result[0][0]);
+            return (result[0]);
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
@@ -57,7 +59,7 @@ export class ImageDatabase extends BaseDataBase {
             const result = await BaseDataBase.connection.raw(`
           SELECT * from ${ImageDatabase.TABLE_NAME} WHERE id = '${id}'
        `);
-            return (result[0][0]);
+            return Image.toImageModel(result[0][0]);
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }

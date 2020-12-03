@@ -5,7 +5,7 @@ export class UserData extends BaseDataBase{
     /**
      * signup
      */
-    private static TableName = "Usuarios";
+    private static TableName = "USER";
 
     public async signup(
         id: string,

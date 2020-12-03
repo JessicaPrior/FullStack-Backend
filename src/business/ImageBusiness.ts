@@ -12,7 +12,7 @@ export class ImageBusiness {
             const authenticator = new Authenticator();
 
             const verifyToken = authenticator.getData(user.token)
-            
+
             if (!image.subtitle || !image.file || !image.collection) {
                 throw new CustomError("Missing input", 422);
             }
@@ -25,14 +25,14 @@ export class ImageBusiness {
             const id = idGenerator.generate();
 
             const imageDatabase = new ImageDatabase();
-            await imageDatabase.createImage(
+            const result = await imageDatabase.createImage(
 
                 id, image.subtitle, verifyToken.id,
                 date, image.file, image.tags,
                 image.collection
             );
 
-            return { message: "Image create succefull!" };
+            return result;
         } catch (error) {
             throw new CustomError(error.message, error.statusCode)
         }
@@ -42,7 +42,7 @@ export class ImageBusiness {
         try {
             const authenticator = new Authenticator();
 
-            const verifyToken = authenticator.getData(user.token)
+            const verifyToken = authenticator.getData(user)
 
             if (!verifyToken) {
                 throw new CustomError("Not authorized", 401);
@@ -51,18 +51,10 @@ export class ImageBusiness {
             const imageDatabase = new ImageDatabase();
             const image = await imageDatabase.getAllImages();
 
-            return {
-                id: image.getId(),
-                subtitle: image.getSubtitle(),
-                author: image.getAuthor(),
-                date: image.getDate(),
-                file: image.getFile(),
-                tags: image.getTags(),
-                collection: image.getCollection()
-            }
+            return image
 
         } catch (error) {
-            throw new CustomError(error.statusCode, error.message)
+            throw new CustomError(error.message, error.statusCode)
         }
     }
 
@@ -70,7 +62,7 @@ export class ImageBusiness {
         try {
 
             const imageDatabase = new ImageDatabase();
-            const image = await imageDatabase.getImageById(input);
+            const image = await imageDatabase.getImageById(input.id);
 
             if (!input.id) {
                 throw new CustomError("invalid-id", 401)
@@ -87,7 +79,7 @@ export class ImageBusiness {
             }
 
         } catch (error) {
-            throw new CustomError(error.statusCode, error.message)
+            throw new CustomError(error.message, error.statusCode)
         }
     }
 }

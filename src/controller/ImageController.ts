@@ -13,17 +13,18 @@ export class ImageController {
                 tags: req.body.tags,
                 collection: req.body.collection
             }
-            
+
             const user: any = {
                 token: req.headers.authorization as string
             }
 
             const imageBusiness = new ImageBusiness();
-            const token = await imageBusiness.createImage(image, user);
+            await imageBusiness.createImage(image, user);
 
-            res.status(200).send({ token });
+            res.status(200).send({ message: "Image published succefully" });
 
         } catch (error) {
+            console.log("roda ooo sua vagabunda")
             res.status(400).send({ error: error.message });
         }
     }
@@ -31,15 +32,15 @@ export class ImageController {
     public async getAllImages(req: Request, res: Response) {
         try {
 
-            const { token }: any = req.headers.authorization as string 
+            const { authorization }: any = req.headers
 
             const imageBusiness = new ImageBusiness();
-            const result = await imageBusiness.getAllImages(token)
+            const result = await imageBusiness.getAllImages(authorization)
 
             res.status(200).send(result);
 
         } catch (error) {
-            throw new CustomError(error.statusCode, error.message)
+            res.status(400).send({error: error.message})
         }
     }
 
@@ -56,7 +57,7 @@ export class ImageController {
             res.status(200).send(result);
 
         } catch (error) {
-            throw new CustomError(error.statusCode, error.message)
+            res.status(400).send({error: error.message})
         }
     }
 }

@@ -50,9 +50,13 @@ export class Image {
     setCollection(collection: string) {
         this.collection = collection;
     }
+
+    static toImageModel(image: any): Image {
+        return new Image(image.id, image.subtitle, image.author, image.date, image.file, image.tags, image.collection);
+    }
 }
 
-export interface ImageInputDTO{
+export interface ImageInputDTO {
     subtitle: string;
     file: string;
     tags: string[];
