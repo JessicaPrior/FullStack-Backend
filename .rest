@@ -1,0 +1,42 @@
+### CADASTRO
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "naruto",
+    "email": "narutin@lbn.com",
+    "password": "rasengan",
+    "nickname": "loirao"
+}
+
+### LOGIN
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "narutin@lbn.com",
+    "password": "rasengan"
+}
+
+### Criar imagens
+POST http://localhost:3003/image/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+Content-Type: application/json
+
+{
+	"subtitle": "PQP meu gato pos um ovo",
+	"file": "https://photos.app.goo.gl/skW7wkeU6hnE2QUf6",
+	"tags": "#frozi #peludo",
+	"collection": "Album de gatinhos"
+}
+
+### Buscar todas as imagens
+GET http://localhost:3003/image/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+Content-Type: application/json
+
+### Buscar imagem por Id
+GET http://localhost:3003/image/9e98d685-ba75-40fe-98e6-a22685c41201
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+Content-Type: application/json
