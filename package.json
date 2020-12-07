@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node ./src/index.ts",
+    "start": "tsc && node ./build/index.js",
+    "build": "tsc",
     "dev": " ts-node-dev ./src/index.ts"
   },
   "author": "Jessica Prior",
@@ -30,9 +31,8 @@
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6",
-    "uuid": "^8.2.0"
-  },
-  "devDependencies": {
+    "uuid": "^8.2.0",
     "ts-node-dev": "^1.0.0"
-  }
+  },
+  "devDependencies": {}
 }
