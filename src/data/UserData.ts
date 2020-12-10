@@ -45,6 +45,20 @@ export class UserData extends BaseDataBase{
             throw new Error(error.sqlMessage || error.message);
         }
     }
+
+    public async userById(id: string): Promise<any>{
+        try {
+            const result = await BaseDataBase.connection
+                .select("*")
+                .from(UserData.TableName)
+                .where({ id });
+
+                return User.toUserModel(result[0]);
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
 }
 
 export const userData: UserData = new UserData();

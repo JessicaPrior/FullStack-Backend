@@ -13,7 +13,8 @@ export class ImageDatabase extends BaseDataBase {
         date: Date,
         file: string,
         tags: string[],
-        collection: string
+        collection: string,
+        author_name: string
     ): Promise<any> {
         try {
 
@@ -25,7 +26,8 @@ export class ImageDatabase extends BaseDataBase {
                     date,
                     file,
                     tags,
-                    collection
+                    collection,
+                    author_name
                 })
                 
             const result = await BaseDataBase.connection(ImageDatabase.Hashtag_Table)

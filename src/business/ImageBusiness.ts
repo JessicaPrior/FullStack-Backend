@@ -3,6 +3,7 @@ import { CustomError } from "../error/CustomError";
 import { ImageInputDTO } from "../model/Image";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
+import { UserData } from '../data/UserData';
 
 export class ImageBusiness {
     public async createImage(image: ImageInputDTO, user: any) {
@@ -12,6 +13,11 @@ export class ImageBusiness {
             const authenticator = new Authenticator();
 
             const verifyToken = authenticator.getData(user.token)
+
+            const userDataBase = new UserData();
+ 
+            const userName = await userDataBase.userById(verifyToken.id)
+            
 
             if (!image.subtitle || !image.file || !image.collection) {
                 throw new CustomError("Missing input", 422);
@@ -29,7 +35,7 @@ export class ImageBusiness {
 
                 id, image.subtitle, verifyToken.id,
                 date, image.file, image.tags,
-                image.collection
+                image.collection, userName.name
             );
 
             return result;

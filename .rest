@@ -1,6 +1,6 @@
 ### CADASTRO
 
-POST http://localhost:3003/user/signup
+POST https://ypic.herokuapp.com/user/signup
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### LOGIN
-POST http://localhost:3003/user/login
+POST https://ypic.herokuapp.com/user/login
 Content-Type: application/json
 
 {
@@ -20,23 +20,23 @@ Content-Type: application/json
 }
 
 ### Criar imagens
-POST http://localhost:3003/image/create
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+POST https://ypic.herokuapp.com/image/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzQ0MjExMiwiZXhwIjoxNjA3NTI4NTEyfQ.QyCOo8hV2CUYj-5c72sdMbACgvGPWT25krf9cy9Gyks
 Content-Type: application/json
 
 {
-	"subtitle": "PQP meu gato pos um ovo",
-	"file": "https://photos.app.goo.gl/skW7wkeU6hnE2QUf6",
+	"subtitle": "Voce quer brincar na neveeee??",
+	"file": "https://petsalut.com/wp-content/uploads/2018/03/angora1.jpg",
 	"tags": "#frozi #peludo",
 	"collection": "Album de gatinhos"
 }
 
 ### Buscar todas as imagens
-GET http://localhost:3003/image/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+GET https://ypic.herokuapp.com/image/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzM4NjI0MSwiZXhwIjoxNjA3NDcyNjQxfQ.Ei96ZOEXMtno-XnN8dbfCcmmkMeFgXL89tpJGnTto6g
 Content-Type: application/json
 
 ### Buscar imagem por Id
-GET http://localhost:3003/image/9e98d685-ba75-40fe-98e6-a22685c41201
+GET https://ypic.herokuapp.com/image/9e98d685-ba75-40fe-98e6-a22685c41201
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
 Content-Type: application/json
