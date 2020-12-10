@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ### Criar imagens
 POST https://ypic.herokuapp.com/image/create
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzQ0MjExMiwiZXhwIjoxNjA3NTI4NTEyfQ.QyCOo8hV2CUYj-5c72sdMbACgvGPWT25krf9cy9Gyks
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzYyMzY4NywiZXhwIjoxNjA3NzEwMDg3fQ.RpEb--RLcblxE-e1aN1DVLDbUACEXFH0URqBsEk0Uhw
 Content-Type: application/json
 
 {
@@ -33,10 +33,10 @@ Content-Type: application/json
 
 ### Buscar todas as imagens
 GET https://ypic.herokuapp.com/image/all
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzM4NjI0MSwiZXhwIjoxNjA3NDcyNjQxfQ.Ei96ZOEXMtno-XnN8dbfCcmmkMeFgXL89tpJGnTto6g
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzYyMzY4NywiZXhwIjoxNjA3NzEwMDg3fQ.RpEb--RLcblxE-e1aN1DVLDbUACEXFH0URqBsEk0Uhw
 Content-Type: application/json
 
 ### Buscar imagem por Id
-GET https://ypic.herokuapp.com/image/9e98d685-ba75-40fe-98e6-a22685c41201
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzAwNDcwMiwiZXhwIjoxNjA3MDkxMTAyfQ.S7sIrrb8LSnPmsd44d9VgHL6jak4G4XVK7vlxUMY-mM
+GET https://ypic.herokuapp.com/image/8d774c43-24e7-4aca-8bb3-79287894e928
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzYyMzY4NywiZXhwIjoxNjA3NzEwMDg3fQ.RpEb--RLcblxE-e1aN1DVLDbUACEXFH0URqBsEk0Uhw
 Content-Type: application/json

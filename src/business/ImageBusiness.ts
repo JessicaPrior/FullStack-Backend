@@ -81,7 +81,8 @@ export class ImageBusiness {
                 date: image.getDate(),
                 file: image.getFile(),
                 tags: image.getTags(),
-                collection: image.getCollection()
+                collection: image.getCollection(),
+                author_name: image.getAuthor_Name()
             }
 
         } catch (error) {
