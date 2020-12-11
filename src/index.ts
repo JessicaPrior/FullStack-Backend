@@ -4,6 +4,7 @@ import cors from "cors";
 import { userRouter } from './routes/userRouter';
 import { imageRouter } from './routes/imageRouter';
 import dotenv from 'dotenv'
+import { albumRouter } from './routes/albumRouter';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use("/user", userRouter)
 app.use("/image", imageRouter)
+app.use("/album", albumRouter)
 
 const server = app.listen(process.env.PORT || 5000, () => {
   if (server) {

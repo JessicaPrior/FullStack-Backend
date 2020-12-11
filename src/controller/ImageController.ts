@@ -1,7 +1,6 @@
 import { ImageInputDTO } from "../model/Image";
 import { Request, Response } from "express";
 import { ImageBusiness } from "../business/ImageBusiness";
-import { CustomError } from "../error/CustomError";
 
 export class ImageController {
     async createImage(req: Request, res: Response) {
@@ -24,7 +23,6 @@ export class ImageController {
             res.status(200).send({ message: "Image published succefully" });
 
         } catch (error) {
-            console.log("roda ooo sua vagabunda")
             res.status(400).send({ error: error.message });
         }
     }

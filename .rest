@@ -40,3 +40,14 @@ Content-Type: application/json
 GET https://ypic.herokuapp.com/image/8d774c43-24e7-4aca-8bb3-79287894e928
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzYyMzY4NywiZXhwIjoxNjA3NzEwMDg3fQ.RpEb--RLcblxE-e1aN1DVLDbUACEXFH0URqBsEk0Uhw
 Content-Type: application/json
+
+### Criar Album de imagens
+POST https://ypic.herokuapp.com/image/create
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzcxNjIwNiwiZXhwIjoxNjA3ODAyNjA2fQ.VXwggD7E3HfseaLwg2li7VPAJRdUABoMx9xMZCHX0Ns
+Content-Type: application/json
+
+{
+    "title": "Album de Gatinhos",
+	"subtitle": "Usss miiimi",
+    "image": "https://petsalut.com/wp-content/uploads/2018/03/angora1.jpg"
+}
