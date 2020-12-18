@@ -42,7 +42,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMt
 Content-Type: application/json
 
 ### Criar Album de imagens
-POST https://ypic.herokuapp.com/image/create
+POST https://ypic.herokuapp.com/album/create
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYwNzcxNjIwNiwiZXhwIjoxNjA3ODAyNjA2fQ.VXwggD7E3HfseaLwg2li7VPAJRdUABoMx9xMZCHX0Ns
 Content-Type: application/json
 
