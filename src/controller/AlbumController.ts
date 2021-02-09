@@ -49,7 +49,7 @@ export class AlbumController {
             }
 
             const albumBusiness = new AlbumBusiness();
-            const result = await albumBusiness.getAlbumById(input)
+            const result = await albumBusiness.getAlbumById(input.id)
 
             res.status(200).send(result);
 

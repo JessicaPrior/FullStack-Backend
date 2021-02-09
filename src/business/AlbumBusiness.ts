@@ -33,7 +33,7 @@ export class AlbumBusiness {
 
             return result;
         } catch (error) {
-            console.log(album)
+            
             throw new CustomError(error.message, error.statusCode)
         }
     }
@@ -62,17 +62,14 @@ export class AlbumBusiness {
         try {
 
             const albumDataBase = new AlbumDataBase();
-            const album = await albumDataBase.getAlbumById(input.id);
+            const album = await albumDataBase.getAlbumById(input);
 
-            if (!input.id) {
+            if (!input) {
                 throw new CustomError("invalid-id", 401)
             }
 
             return {
-                id: album.getId(),
-                title: album.getTitle(),
-                subtitle: album.getSubtitle(),
-                image: album.getImage()
+               album
             }
         } catch (error) {
             throw new CustomError(error.message, error.statusCode)

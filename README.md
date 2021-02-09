@@ -8,6 +8,7 @@ Estrutura elaborada para receber as seguintes funcionalidades:
 - Select all images 
 - Select image by Id
 - Create Album
+- View Album
 
 Pode ser executado pelo terminal do VS Code ou pelo deploy feito. Sendo ele:
 - https://ypic.herokuapp.com/  <br/> 

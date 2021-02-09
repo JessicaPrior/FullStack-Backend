@@ -42,10 +42,14 @@ export class AlbumDataBase extends BaseDataBase {
 
     public async getAlbumById(id: string): Promise<Album> {
         try {
+            
             const result = await BaseDataBase.connection.raw(`
-          SELECT * from ${AlbumDataBase.TABLE_NAME} WHERE id = '${id}'
+            select im.file from Album_Table at 
+            left join Inserction_Table it on it.album_id = at.id 
+            join Image_Table im on it.image_id = im.id 
+            where album_id = '${id}'
        `);
-            return Album.toAlbumModel(result[0][0]);
+            return (result[0]);
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }
@@ -56,7 +60,7 @@ export class AlbumDataBase extends BaseDataBase {
             const search = await BaseDataBase.connection.raw(`
                 select * from Inserction_Table where image_id = '${image_id}'
             `)
-                
+
             if (search[0].length > 0) {
                 throw new Error("Image already exists");
             }

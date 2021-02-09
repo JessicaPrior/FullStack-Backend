@@ -58,6 +58,21 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMt
 content-type: application/json
 
 {
-    "image_id": "40ec2b87-fa66-4eac-8d2a-f2218022e44f",
+    "image_id": "607636b7-4244-440b-b337-c94199b57de4",
     "album_id": "f5973d1f-eb3c-48a5-ba90-2b59d9b84a5d"
 }
+
+### Vizualizar fotos no album
+GET https://ypic.herokuapp.com/album/f5973d1f-eb3c-48a5-ba90-2b59d9b84a5d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYxMjgzOTMwOCwiZXhwIjoxNjEyODQyOTA4fQ.9S3TVEHc7dTHyMTfQgponRtEJfitR9nBRt_6HbRU8G4
+content-type: application/json
+
+{ }
+
+### Vizualizar fotos no album
+GET http://localhost:3003/album/f5973d1f-eb3c-48a5-ba90-2b59d9b84a5d
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYxMjgzOTMwOCwiZXhwIjoxNjEyODQyOTA4fQ.9S3TVEHc7dTHyMTfQgponRtEJfitR9nBRt_6HbRU8G4
+content-type: application/json
+
+{ }
+
