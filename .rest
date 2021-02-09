@@ -53,31 +53,11 @@ Content-Type: application/json
 }
 
 ### Adicionar fotos a albuns
-POST http://localhost:3003/album/add-photo
+POST https://ypic.herokuapp.com/album/add-photo
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYxMjgzOTMwOCwiZXhwIjoxNjEyODQyOTA4fQ.9S3TVEHc7dTHyMTfQgponRtEJfitR9nBRt_6HbRU8G4
 content-type: application/json
 
 {
     "image_id": "40ec2b87-fa66-4eac-8d2a-f2218022e44f",
     "album_id": "f5973d1f-eb3c-48a5-ba90-2b59d9b84a5d"
-}
-
-### LOGIN
-POST http://localhost:3003/user/login
-Content-Type: application/json
-
-{
-    "email": "narutin@lbn.com",
-    "password": "rasengan"
-}
-
-### Criar Album de imagens
-POST http://localhost:3003/album/create
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNiOWYxNDNiLTdhMmMtNGFjYy1iMTllLWQ1ZjM0NzcyYzljNiIsImlhdCI6MTYxMjgzOTMwOCwiZXhwIjoxNjEyODQyOTA4fQ.9S3TVEHc7dTHyMTfQgponRtEJfitR9nBRt_6HbRU8G4
-Content-Type: application/json
-
-{
-    "title": "Album de Gatinhos",
-	"subtitle": "Usss miiimi",
-    "image": "https://petsalut.com/wp-content/uploads/2018/03/angora1.jpg"
 }
