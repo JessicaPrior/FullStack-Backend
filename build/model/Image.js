@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Image = void 0;
 class Image {
-    constructor(id, subtitle, author, date, file, tags, collection) {
+    constructor(id, subtitle, author, date, file, tags, collection, author_name) {
         this.id = id;
         this.subtitle = subtitle;
         this.author = author;
@@ -10,6 +10,7 @@ class Image {
         this.file = file;
         this.tags = tags;
         this.collection = collection;
+        this.author_name = author_name;
     }
     getId() { return this.id; }
     getSubtitle() { return this.subtitle; }
@@ -18,6 +19,7 @@ class Image {
     getFile() { return this.file; }
     getTags() { return this.tags; }
     getCollection() { return this.collection; }
+    getAuthor_Name() { return this.author_name; }
     setId(id) {
         this.id = id;
     }
@@ -39,8 +41,11 @@ class Image {
     setCollection(collection) {
         this.collection = collection;
     }
+    setAuthor_Name(author_name) {
+        this.author_name = author_name;
+    }
     static toImageModel(image) {
-        return new Image(image.id, image.subtitle, image.author, image.date, image.file, image.tags, image.collection);
+        return new Image(image.id, image.subtitle, image.author, image.date, image.file, image.tags, image.collection, image.author_name);
     }
 }
 exports.Image = Image;

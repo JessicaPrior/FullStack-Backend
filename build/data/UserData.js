@@ -48,6 +48,20 @@ class UserData extends BaseDatabase_1.default {
             }
         });
     }
+    userById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield BaseDatabase_1.default.connection
+                    .select("*")
+                    .from(UserData.TableName)
+                    .where({ id });
+                return User_1.User.toUserModel(result[0]);
+            }
+            catch (error) {
+                throw new Error(error.sqlMessage || error.message);
+            }
+        });
+    }
 }
 exports.UserData = UserData;
 UserData.TableName = "USER";

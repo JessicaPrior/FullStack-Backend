@@ -8,13 +8,15 @@ const cors_1 = __importDefault(require("cors"));
 const userRouter_1 = require("./routes/userRouter");
 const imageRouter_1 = require("./routes/imageRouter");
 const dotenv_1 = __importDefault(require("dotenv"));
+const albumRouter_1 = require("./routes/albumRouter");
 dotenv_1.default.config();
 const app = express_1.default();
 app.use(express_1.default.json());
 app.use(cors_1.default());
 app.use("/user", userRouter_1.userRouter);
 app.use("/image", imageRouter_1.imageRouter);
-const server = app.listen(process.env.DB_PORT || 5000, () => {
+app.use("/album", albumRouter_1.albumRouter);
+const server = app.listen(process.env.PORT || 5000, () => {
     if (server) {
         const address = server.address();
         console.log(`Servidor rodando em http://localhost:${address.port}`);

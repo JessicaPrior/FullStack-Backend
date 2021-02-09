@@ -22,7 +22,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Authenticator = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
 class Authenticator {
-    generateToken(input, expiresIn = process.env.ACCESS_TOKEN_EXPIRES_IN) {
+    generateToken(input, expiresIn = process.env.JWT_EXPIRES_IN) {
         const token = jwt.sign({
             id: input.id
         }, process.env.JWT_KEY, {

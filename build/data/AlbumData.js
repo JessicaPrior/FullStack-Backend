@@ -12,43 +12,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ImageDatabase = void 0;
+exports.AlbumDataBase = void 0;
 const BaseDatabase_1 = __importDefault(require("./BaseDatabase"));
-const Image_1 = require("../model/Image");
-class ImageDatabase extends BaseDatabase_1.default {
-    createImage(id, subtitle, author, date, file, tags, collection, author_name) {
+class AlbumDataBase extends BaseDatabase_1.default {
+    createAlbum(id, title, subtitle, image) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield BaseDatabase_1.default.connection(ImageDatabase.TABLE_NAME)
+                yield BaseDatabase_1.default.connection
                     .insert({
                     id,
+                    title,
                     subtitle,
-                    author,
-                    date,
-                    file,
-                    tags,
-                    collection,
-                    author_name
-                });
-                const result = yield BaseDatabase_1.default.connection(ImageDatabase.Hashtag_Table)
-                    .select("tags")
-                    .where({ tags });
-                if (result.length <= 0) {
-                    yield BaseDatabase_1.default.connection(ImageDatabase.Hashtag_Table)
-                        .insert({ id, tags });
-                }
-                return;
+                    image
+                })
+                    .into(AlbumDataBase.TABLE_NAME);
             }
             catch (error) {
                 throw new Error(error.sqlMessage || error.message);
             }
         });
     }
-    getAllImages() {
+    getAllAlbuns() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield BaseDatabase_1.default.connection.raw(`
-          SELECT * from ${ImageDatabase.TABLE_NAME} 
+          SELECT * from ${AlbumDataBase.TABLE_NAME} 
        `);
                 return (result[0]);
             }
@@ -57,13 +45,39 @@ class ImageDatabase extends BaseDatabase_1.default {
             }
         });
     }
-    getImageById(id) {
+    getAlbumById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield BaseDatabase_1.default.connection.raw(`
-          SELECT * from ${ImageDatabase.TABLE_NAME} WHERE id = '${id}'
+            select im.file from Album_Table at 
+            left join Inserction_Table it on it.album_id = at.id 
+            join Image_Table im on it.image_id = im.id 
+            where album_id = '${id}'
        `);
-                return Image_1.Image.toImageModel(result[0][0]);
+                return (result[0]);
+            }
+            catch (error) {
+                throw new Error(error.sqlMessage || error.message);
+            }
+        });
+    }
+    addItem(id, image_id, album_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const search = yield BaseDatabase_1.default.connection.raw(`
+                select * from Inserction_Table where image_id = '${image_id}'
+            `);
+                if (search[0].length > 0) {
+                    throw new Error("Image already exists");
+                }
+                const result = yield BaseDatabase_1.default.connection
+                    .insert({
+                    id,
+                    image_id,
+                    album_id
+                })
+                    .into("Inserction_Table");
+                return (result);
             }
             catch (error) {
                 throw new Error(error.sqlMessage || error.message);
@@ -71,7 +85,6 @@ class ImageDatabase extends BaseDatabase_1.default {
         });
     }
 }
-exports.ImageDatabase = ImageDatabase;
-ImageDatabase.TABLE_NAME = "Image_Table";
-ImageDatabase.Hashtag_Table = "Hashtag_Table";
-//# sourceMappingURL=ImageDataBase.js.map
+exports.AlbumDataBase = AlbumDataBase;
+AlbumDataBase.TABLE_NAME = "Album_Table";
+//# sourceMappingURL=AlbumData.js.map

@@ -9,36 +9,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ImageController = void 0;
-const ImageBusiness_1 = require("../business/ImageBusiness");
-class ImageController {
-    createImage(req, res) {
+exports.AlbumController = void 0;
+const AlbumBusiness_1 = require("../business/AlbumBusiness");
+class AlbumController {
+    createAlbum(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const image = {
+                const album = {
+                    title: req.body.title,
                     subtitle: req.body.subtitle,
-                    file: req.body.file,
-                    tags: req.body.tags,
-                    collection: req.body.collection
+                    image: req.body.image
                 };
                 const user = {
                     token: req.headers.authorization
                 };
-                const imageBusiness = new ImageBusiness_1.ImageBusiness();
-                yield imageBusiness.createImage(image, user);
-                res.status(200).send({ message: "Image published succefully" });
+                const albumBusiness = new AlbumBusiness_1.AlbumBusiness();
+                yield albumBusiness.createAlbum(album, user);
+                res.status(200).send({ message: "Album published succefully" });
             }
             catch (error) {
                 res.status(400).send({ error: error.message });
             }
         });
     }
-    getAllImages(req, res) {
+    getAllAlbuns(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { authorization } = req.headers;
-                const imageBusiness = new ImageBusiness_1.ImageBusiness();
-                const result = yield imageBusiness.getAllImages(authorization);
+                const albumBusiness = new AlbumBusiness_1.AlbumBusiness();
+                const result = yield albumBusiness.getAllAlbuns(authorization);
                 res.status(200).send(result);
             }
             catch (error) {
@@ -46,15 +45,31 @@ class ImageController {
             }
         });
     }
-    getImageById(req, res) {
+    getAlbumById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const input = {
                     id: req.params.id
                 };
-                const imageBusiness = new ImageBusiness_1.ImageBusiness();
-                const result = yield imageBusiness.getImageById(input);
+                const albumBusiness = new AlbumBusiness_1.AlbumBusiness();
+                const result = yield albumBusiness.getAlbumById(input.id);
                 res.status(200).send(result);
+            }
+            catch (error) {
+                res.status(400).send({ error: error.message });
+            }
+        });
+    }
+    addItem(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const input = {
+                    image_id: req.body.image_id,
+                    album_id: req.body.album_id
+                };
+                const albumBusiness = new AlbumBusiness_1.AlbumBusiness();
+                yield albumBusiness.addItem(input);
+                res.status(200).send({ message: "Image added successfully" });
             }
             catch (error) {
                 res.status(400).send({ error: error.message });
@@ -62,5 +77,5 @@ class ImageController {
         });
     }
 }
-exports.ImageController = ImageController;
-//# sourceMappingURL=ImageController.js.map
+exports.AlbumController = AlbumController;
+//# sourceMappingURL=AlbumController.js.map
