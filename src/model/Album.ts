@@ -3,7 +3,7 @@ export class Album {
         private id: string,
         private title: string,
         private subtitle: string,
-        private image: string
+        private image: string,
     ) { }
 
     getId(): string { return this.id }

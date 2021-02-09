@@ -5,6 +5,7 @@ import BaseDataBase from './BaseDatabase';
 export class AlbumDataBase extends BaseDataBase {
     private static TABLE_NAME = "Album_Table";
 
+
     public async createAlbum(
         id: string,
         title: string,
@@ -50,12 +51,23 @@ export class AlbumDataBase extends BaseDataBase {
         }
     }
 
-    public async addItem(id: string): Promise<Album> {
+    public async addItem(id: string, image_id: string, album_id: string): Promise<any> {
         try {
-            const result = await BaseDataBase.connection.raw(`
-          INSERT * from ${AlbumDataBase.TABLE_NAME} WHERE id = '${id}'
-       `);
-            return Album.toAlbumModel(result[0][0]);
+            const search = await BaseDataBase.connection.raw(`
+                select * from Inserction_Table where image_id = '${image_id}'
+            `)
+                
+            if (search[0].length > 0) {
+                throw new Error("Image already exists");
+            }
+            const result = await BaseDataBase.connection
+                .insert({
+                    id,
+                    image_id,
+                    album_id
+                })
+                .into("Inserction_Table")
+            return (result);
         } catch (error) {
             throw new Error(error.sqlMessage || error.message)
         }

@@ -57,4 +57,22 @@ export class AlbumController {
             res.status(400).send({ error: error.message })
         }
     }
+
+    public async addItem(req: Request, res: Response) {
+        try {
+
+            const input = {
+                image_id: req.body.image_id,
+                album_id: req.body.album_id
+            }
+
+            const albumBusiness = new AlbumBusiness();
+            await albumBusiness.addItem(input)
+
+            res.status(200).send({ message: "Image added successfully" });
+
+        } catch (error) {
+            res.status(400).send({ error: error.message })
+        }
+    }
 }

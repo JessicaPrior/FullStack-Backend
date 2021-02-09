@@ -78,4 +78,20 @@ export class AlbumBusiness {
             throw new CustomError(error.message, error.statusCode)
         }
     }
+
+    public async addItem(input: any){
+        try {
+
+            const idGenerator = new IdGenerator();
+            const id = idGenerator.generate();
+
+            const albumDataBase = new AlbumDataBase();
+            const item = await albumDataBase.addItem(id, input.image_id, input.album_id);
+
+            return item;
+            
+        } catch (error) {
+            throw new CustomError(error.message, error.statusCode)
+        }
+    }
 }
